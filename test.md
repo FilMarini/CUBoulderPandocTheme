@@ -20,5 +20,5 @@ date: 04/28/2021
 
 ## Don't know what to write
 
-Boh
+![Be Boulder](images/drawio/be_boulder.png){width="70%"}
 

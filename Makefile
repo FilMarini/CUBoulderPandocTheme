@@ -15,13 +15,13 @@ echoing:
 ima:
 	$(MAKE) -C $(image_dirs) all
 
-$(slides_tex): %.tex: $(notedir)/%.md preamble-slides.tex
+$(slides_tex): %.tex: $(notedir)/%.md
 	pandoc $< \
       --from markdown+grid_tables \
 	    -t beamer \
 	    --slide-level 2 \
 	    -s \
-	    -- template=template.latex \
+	    --template=template.latex \
 	    --filter ./bin/overlay_filter \
 	    -V themeoptions:block=fill \
 	    -o $@
