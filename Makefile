@@ -1,7 +1,8 @@
 
-notedir := ./
+notedir := .
 
 notes := $(wildcard $(notedir)/*.md)
+notes := $(filter-out ./README.md, $(notes))
 slides_tex := $(patsubst $(notedir)/%.md,%.tex,$(notes))
 slides_pdf := $(patsubst %.tex,%.pdf,$(slides_tex)) 
 slides_key := $(patsubst %.pdf,%.key,$(slides_pdf)) 
@@ -12,10 +13,11 @@ image_targets = $(patsubst %.drawio,%.pdf, $(images_files))
 
 echoing:
 	@echo "test" $(image_targets)
+	@echo $(notes)
 ima:
 	$(MAKE) -C $(image_dirs) all
 
-$(slides_tex): %.tex: $(notedir)/%.md
+$(slides_tex): %.tex: $(notes)
 	pandoc $< \
       --from markdown+grid_tables \
 	    -t beamer \
