@@ -1,6 +1,8 @@
+template := template
+
+export TEXINPUTS:=.:./$(template):${TEXINPUTS}
 
 notedir := .
-
 notes := $(wildcard $(notedir)/*.md)
 notes := $(filter-out ./README.md, $(notes))
 slides_tex := $(patsubst $(notedir)/%.md,%.tex,$(notes))
@@ -10,7 +12,6 @@ image_dirs = images/drawio
 images_files := $(foreach dir,$(image_dirs),$(wildcard $(image_dirs)/*.drawio))
 #images_files := $(shell basename images/*.drawio)
 image_targets = $(patsubst %.drawio,%.pdf, $(images_files))
-
 echoing:
 	@echo "test" $(image_targets)
 	@echo $(notes)
@@ -23,8 +24,8 @@ $(slides_tex): %.tex: $(notes)
 	    -t beamer \
 	    --slide-level 2 \
 	    -s \
-	    --template=template.latex \
-	    --filter ./bin/overlay_filter \
+	    --template=$(template)/template.latex \
+	    --filter $(template)/bin/overlay_filter \
 	    -V themeoptions:block=fill \
 	    -o $@
 
