@@ -1,4 +1,4 @@
-DRAW_COMMAND = drawio
+DRAW_COMMAND = /Applications/draw.io.app/Contents/MacOS/draw.io
 DRAWIO_FLAGS_PDF = -x -f pdf --crop
 DRAWIO_FLAGS_PNG = -x -t -f png --crop
 DRAWIO_FLAGS_SVG = -x -f svg --crop
