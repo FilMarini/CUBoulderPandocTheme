@@ -10,13 +10,14 @@ slides_pdf := $(patsubst %.tex,%.pdf,$(slides_tex))
 slides_key := $(patsubst %.pdf,%.key,$(slides_pdf)) 
 image_dirs = images/drawio
 images_files := $(foreach dir,$(image_dirs),$(wildcard $(image_dirs)/*.drawio))
-#images_files := $(shell basename images/*.drawio)
 image_targets = $(patsubst %.drawio,%.pdf, $(images_files))
 echoing:
 	@echo "test" $(image_targets)
 	@echo $(notes)
 ima:
-	$(MAKE) -C $(image_dirs) all
+	if [ -d "$(image_dirs)" ]; then \
+		$(MAKE) -C $(image_dirs) all; \
+	fi
 
 $(slides_tex): %.tex: $(notes)
 	pandoc $< \
@@ -51,12 +52,12 @@ all_key: $(slides_key)
 
 # clean up everything except pdfs and keynote files 
 clean:
-	#$(MAKE) -C images clean
 	latexmk -c
 	rm -rf *.nav *.snm *.pdf *.xdv auto *.vrb
 	rm -rf $(slides_tex)
-
-
+	if [ -d	"$(image_dirs)" ]; then \
+		$(MAKE) -C $(image_dirs) clean; \
+	fi
 
 # clean up everything including pdfs and keynote files 
 reallyclean:
@@ -64,7 +65,10 @@ reallyclean:
 	rm -rf $(slides_tex)
 	rm -rf *.nav *.snm  *.log auto
 	rm -rf $(slides_key)
-	$(MAKE) -C images/ clean
+	if [ -d	"$(image_dirs)" ]; then \
+		$(MAKE) -C $(image_dirs) clean; \
+	fi
+
 .DEFAULT_GOAL := all
 
 .PHONY: all all_key clean reallyclean
