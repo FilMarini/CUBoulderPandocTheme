@@ -23,10 +23,14 @@
 \definecolor{light}{RGB}{162, 164, 163}
 \definecolor{white}{RGB}{255, 255, 255}
 \definecolor{myblue}{RGB}{	52, 152, 219}
+\definecolor{infnblue}{RGB}{14, 41, 76}
+\definecolor{infnlightblue}{RGB}{64, 152, 185}
 \setbeamercolor{normal text}{fg = black, bg = white}
-\setbeamercolor{footer}{fg = white, bg = black}
-\setbeamercolor{alerted text}{fg = gold, bg = light}
+\setbeamercolor{footer}{fg = black, bg = white}
+\setbeamercolor{titlefooter}{fg = white, bg = infnblue}
+\setbeamercolor{alerted text}{fg = infnlightblue, bg = light}
 \setbeamercolor{example text}{fg = myblue, bg = white}
+\setbeamercolor{frametitle}{bg=infnblue}
 
 % Presentation mode
 \RequirePackage{pgfpages}
@@ -181,10 +185,10 @@
 
 % Footer
 \setbeamertemplate{footline}{%
-    \begin{beamercolorbox}[wd = \textwidth, ht = 1cm, sep = 0.2cm]{footer}
-        \includegraphics[height = 0.6cm]{img/cu.pdf} \hspace{.3cm} \includegraphics[height = 0.6cm]{img/CMS.pdf}
+    \begin{beamercolorbox}[wd = \textwidth, ht = 0.8cm, sep = 0.2cm]{footer}
+        \includegraphics[height = 0.4cm]{img/infn_short.png} \hspace{.3cm} \includegraphics[height = 0.4cm]{img/cta.png}
         \hfill
-        \raisebox{0.22cm}{
+        \raisebox{0.1cm}{
             \insertshortauthor
             \quad
             \textbullet
@@ -208,10 +212,10 @@
 \AtBeginDocument{%
     \apptocmd{\appendix}{%
         \setbeamertemplate{footline}{%
-        \begin{beamercolorbox}[wd = \textwidth, ht = 1cm, sep = 0.2cm]{footer}
-            \includegraphics[height = 0.6cm]{img/cu.pdf} \hspace{.3cm} \includegraphics[height = 0.6cm]{img/CMS.pdf}
+        \begin{beamercolorbox}[wd = \textwidth, ht = 0.8cm, sep = 0.2cm]{footer}
+            \includegraphics[height = 0.4cm]{img/infn_short.png} \hspace{.3cm} \includegraphics[height = 0.4cm]{img/cta.png}
             \hfill
-            \raisebox{0.22cm}{
+            \raisebox{0.1cm}{
                 \insertshortauthor
                 \quad
                 \textbullet
@@ -250,10 +254,10 @@
 \AtBeginSection{
     {
         \setbeamertemplate{footline}{
-           \begin{beamercolorbox}[wd = \textwidth, ht = 1cm, sep = 0.2cm]{footer}
-                \includegraphics[height = 0.6cm]{img/cu.pdf} \hspace{.3cm} \includegraphics[height = 0.6cm]{img/CMS.pdf}
+           \begin{beamercolorbox}[wd = \textwidth, ht = 0.8cm, sep = 0.2cm]{footer}
+                \includegraphics[height = 0.4cm]{img/infn_short.png} \hspace{.3cm} \includegraphics[height = 0.4cm]{img/cta.png}
                 \hfill
-                \raisebox{0.22cm}{
+                \raisebox{0.1cm}{
                     \insertshortauthor
                     \quad
                     \textbullet
@@ -316,12 +320,13 @@
 \newcommand*{\copyrightnotice}[1]{\def\@copyrightnotice{#1}}
 \renewcommand{\maketitle}[1][\item Welcome, everyone!]{
     \begingroup
-        \setbeamercolor{normal text}{fg = white, bg = black}
+        \setbeamercolor{normal text}{fg = white, bg = infnblue}
         \setbeamertemplate{footline}{
-            \begin{beamercolorbox}[wd = \textwidth, ht = 1.2cm, sep = 0.4cm]{footer}
-                \includegraphics[height = 0.8cm]{img/boulder-r.pdf}
+            \begin{beamercolorbox}[wd = \textwidth, ht = 1.2cm, sep = 0.4cm]{titlefooter}
+                \includegraphics[height = 1.5cm]{img/infn_inverted.png}
                 \hfill
-                \includegraphics[height = 1.0cm]{img/CMS.pdf}
+                \vspace{0.2cm}
+                \includegraphics[height = 1.0cm]{img/cta_inverted.png}
                 \ifdefined\@copyrightnotice
                     \raisebox{0.22cm}{
                         \begin{minipage}{0.65\paperwidth}
